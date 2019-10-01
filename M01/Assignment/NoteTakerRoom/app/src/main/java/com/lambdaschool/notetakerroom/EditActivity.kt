@@ -18,7 +18,7 @@ class EditActivity : AppCompatActivity() {
         ThemeUtils.onActivityCreateSetTheme(this)
         setContentView(R.layout.activity_edit)
 
-        note = intent.getSerializableExtra("editNote") as Note
+        note = intent.getSerializableExtra("editNote") as Note?
         if (note == null) {
             note = Note(Note.NO_ID)
         }

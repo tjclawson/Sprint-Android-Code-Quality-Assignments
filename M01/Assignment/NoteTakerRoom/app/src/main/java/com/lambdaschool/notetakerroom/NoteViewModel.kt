@@ -19,14 +19,14 @@ class NoteViewModel : ViewModel() {
     }
 
     private fun loadList(context: Context) {
-        repo = NoteRepository()
+        repo = NoteRepository(context)
         noteList = repo!!.getNotes(context)
     }
 
     fun addNote(note: Note, context: Context) {
         if (noteList != null) {
             repo!!.addNote(note)
-            //            noteList = repo.getNotes(context);
+            noteList = repo?.getNotes(context)
         }
     }
 }
