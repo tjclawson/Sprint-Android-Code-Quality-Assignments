@@ -5,68 +5,41 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.AsyncTask
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_pokemon_details.*
 
 import java.util.ArrayList
 
 class PokemonDetailsActivity : AppCompatActivity() {
 
-    internal var pokemon: Pokemon? = null
+    companion object {
+        const val KEY = "INTENT_KEY"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pokemon_details)
 
-        GetPokemon().execute(intent.getStringExtra("Search_Parameter"))
-    }
+        val index = intent.getIntExtra(KEY, 4)
+        var pokemon = PokeDex.pokeDex[index]
 
-    private fun buildTextView(moveName: String): TextView {
-        val view = TextView(this)
-        view.text = moveName
-        view.textSize = 14f
-        view.setPadding(10, 10, 10, 10)
-        return view
-    }
+        tv_name.append(pokemon.name)
+        tv_id.append(pokemon.id.toString())
 
-    override fun onBackPressed() {
-        setResult(Activity.RESULT_OK, Intent().putExtra("pokemon", pokemon))
-        finish()
-    }
-
-    inner class GetPokemon : AsyncTask<String, Pokemon, Bitmap>() {
-
-        override fun onPostExecute(bitmap: Bitmap) {
-            background_image?.setImageBitmap(bitmap)
-            findViewById<View>(R.id.progress_circular).visibility = View.INVISIBLE
+        for(i in 0 until pokemon.abilities!!.size){
+            var ability = pokemon.abilities
+            tv_abilities.append(ability!![i].ability.name + ", ")
         }
 
-        override fun onProgressUpdate(vararg values: Pokemon) {
-            pokemon = values[0]
-            text_title?.text = values[0].name
-            type_A?.text = values[0].typeA
-            type_B?.text = values[0].typeB
-            text_number?.text = String.format("No %03d", values[0].id)
-
-            val movesViews = ArrayList<View>()
-            for (move in values[0].moves!!) {
-                movesViews.add(buildTextView(move))
-            }
-            runOnUiThread {
-                for (moveView in movesViews) {
-                    layout_moves_list?.addView(moveView)
-                }
-            }
+        for(i in 0 until pokemon.types!!.size){
+            var type = pokemon.types
+            tv_types.append(type!![i].type.name + ", ")
         }
 
-        @SuppressLint("WrongThread")
-        override fun doInBackground(vararg strings: String): Bitmap? {
-            val loading = PokemonDao.getPokemon(strings[0])
-            onProgressUpdate(loading)
-            return loading.sprite
-        }
+        Picasso.get().load(pokemon.sprites!!.front_shiny).resize(1000, 1000).into(iv_detail)
     }
 }

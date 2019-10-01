@@ -13,7 +13,7 @@ import java.net.URL
 
 import javax.net.ssl.HttpsURLConnection
 
-object NetworkAdapter {
+/*object NetworkAdapter {
 
     private const val TIMEOUT = 3000
 
@@ -120,4 +120,4 @@ object NetworkAdapter {
 
         return result[0];*/
     }
-}
+}*/

@@ -3,7 +3,7 @@ package com.lambdaschool.sprintchallenge3_pokeapi
 import org.json.JSONException
 import org.json.JSONObject
 
-object PokemonDao {
+/*object PokemonDao {
     private val POKEMON_URL = "https://pokeapi.co/api/v2/pokemon/%s/" // add pokemon name as
 
     fun getPokemon(name: String): Pokemon {
@@ -17,4 +17,4 @@ object PokemonDao {
 
         return pokemon
     }
-}
+}*/
