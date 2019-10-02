@@ -24,4 +24,5 @@ For this app, you'll be building a simple, basic calculator that performs math o
 * Learn what parameterized tests are write a function to check if a given number is a prime number. Now add parameterized tests to this function to verify the behavior of the function. 
 Read more about parameterized tests here. 
 https://github.com/junit-team/junit4/wiki/parameterized-tests
+
 https://blog.kotlin-academy.com/parametrized-tests-with-spek-e0e02d5766a
