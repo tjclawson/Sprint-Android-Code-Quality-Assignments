@@ -13,4 +13,8 @@ class Calculator (private val math: Math) {
     fun sumSquares(a: Int, b: Int): Int {
         return math.sumOfSquares(a, b)
     }
+
+    fun primeCheck(a: Float, i: Float): Boolean {
+        return math.checkPrimeRecurse(a, i)
+    }
 }

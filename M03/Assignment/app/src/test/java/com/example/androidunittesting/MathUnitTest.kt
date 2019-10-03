@@ -47,4 +47,16 @@ class MathUnitTest {
 
         assertEquals(expected, result)
     }
+
+    @Test
+    fun calcPrime() {
+        val a = 13f
+        val i = 2f
+        val expected = true
+        `when`(math.checkPrimeRecurse(a, i)).thenReturn(expected)
+
+        val result = calculator.primeCheck(a, i)
+
+        assertEquals(expected, result)
+    }
 }
