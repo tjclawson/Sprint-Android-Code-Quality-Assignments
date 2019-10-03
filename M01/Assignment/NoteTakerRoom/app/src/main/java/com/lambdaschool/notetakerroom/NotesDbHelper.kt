@@ -20,7 +20,7 @@ class NotesDbHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,
     }
 
     companion object {
-        private val DATABASE_VERSION = 0
+        private val DATABASE_VERSION = 1
         private val DATABASE_NAME = "NotesDatabase.db"
     }
 }

@@ -117,7 +117,7 @@ class MainActivity : AppCompatActivity() {
             if (requestCode == EDIT_REQUEST_CODE) {
                 if (data != null) {
                     val returnedNote = data.getSerializableExtra(EditActivity.EDIT_NOTE_KEY) as Note
-
+                    val i = 0
                     viewModel!!.addNote(returnedNote, this@MainActivity)
                 }
             }

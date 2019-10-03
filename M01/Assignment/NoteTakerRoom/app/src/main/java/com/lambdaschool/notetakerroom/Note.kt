@@ -17,7 +17,7 @@ class Note : Serializable {
     var id: Long = 0
 
     var timestamp: Long = 0
-        private set
+        //private set
 
     constructor(id: Long, title: String, content: String) {
         this.title = title
@@ -54,9 +54,9 @@ class Note : Serializable {
         this.timestamp = System.currentTimeMillis()
     }
 
-    constructor(id: Long) {
+    /*constructor(id: Long) {
         this.id = id
-    }
+    }*/
 
     constructor(jsonObject: JSONObject, name: String) {
         this.id = name.toLongOrNull() ?: 0
